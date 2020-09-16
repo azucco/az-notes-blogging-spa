@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp"> <!-- il codice che gestisce l'applicazione si trova nel modulo omonimo -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appunti</title>
+</head>
+
+<body ng-controller="appController as a">
+    <div class="container">
+        <header-component></header-component>
+        <div class="row">
+            <aside-component tags="a.tags" get-note-list-by-tags="a.fetchNotes(selectedTags)" class="col-md-4"></aside-component>
+            <div ng-view class="col-md-8">
+            </div>
+        </div>
+        <footer-component></footer-component>
+    </div>
+</body>
+
+</html>

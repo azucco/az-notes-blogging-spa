@@ -1,0 +1,23 @@
+<div class="row mb-2" ng-repeat="note in nl.notes">
+  <div class="col-md-12">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <span>
+          <a class="tag" ng-repeat="tag in note.tags" ng-href="tag/{{tag | lowercase}}">
+            <strong class="d-inline-block mb-2 text-primary">{{tag}}</strong>
+          </a>
+        </span>
+        <div>
+          <note-title-component 
+            title="note.title" 
+            id="note._id" 
+            remove-note="nl.removeNote(note._id)" 
+          />
+        </div>
+        <div class="mb-1 text-muted">{{note.created | date:"dd/MM/yy"}} <span ng-show="note.updated !== undefined">(updated: {{note.updated | date:"dd/MM/yy"}})</span></div>
+        <p class="card-text mb-auto">{{note.description}}</p>
+        <a ng-href="{{note._id}}" class="stretched-link">Continue reading</a>
+      </div>
+    </div>
+  </div>
+</div>

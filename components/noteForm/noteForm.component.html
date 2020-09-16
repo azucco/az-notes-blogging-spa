@@ -1,0 +1,20 @@
+<form name="noteForm">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" id="title" ng-model="nf.note.title">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" ows="5" ng-model="nf.note.description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="description">Tags</label>
+        <input class="form-control" id="description" ng-model="nf.note.tagsString"></input>
+    </div>
+    <div class="form-group">
+        <label for="markdown">Markdown</label>
+        <textarea class="form-control" id="markdown" rows="30" ng-model="nf.note.markdown"></textarea>
+    </div>
+    <button typr="button" ng-click="nf.save()" ng-disabled="!noteForm.$dirty" class="btn btn-primary mb-2">Save note</button>
+    <a ng-href="/{{nf.note.id}}" class="btn btn-danger mb-2">Cancel</a>
+</form>

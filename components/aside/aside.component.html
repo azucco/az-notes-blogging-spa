@@ -9,10 +9,12 @@
       <ol class="list-unstyled mb-0">
         <li ng-repeat="tag in a.tags">
           <a 
-            ng-click="a.onSelectTag(tag)" 
+            class="badge badge-pill"
+            ng-click="a.onSelectTag(tag.value)" 
             ng-href="/"
-            ng-class="{selected: a.selectedTags.indexOf(tag) === -1}">
-              {{tag}}
+            ng-class="{'badge-primary': a.selectedTags.indexOf(tag.value) !== -1, 
+                      'badge-light': a.selectedTags.indexOf(tag.value) === -1}">
+              {{tag.value}}
           </a>
         </li>
       </ol>

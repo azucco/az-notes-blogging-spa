@@ -14,14 +14,6 @@ export default class ResourcesService {
                 fetch: { isArray: true }
             });
 
-        this.getNotesByTags = this.resource(`http://localhost:3000/notes/tags/:tags`,
-            {
-                id: '@tags'
-            },
-            {
-                fetch: { isArray: true }
-            });
-
         this.getNote = this.resource(`http://localhost:3000/note/:id`,
             {
                 id: '@id'

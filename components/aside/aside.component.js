@@ -5,7 +5,7 @@ export default function asideComponent() {
         controllerAs: 'a',
         bindings: {
             tags: '<',
-            getNoteListByTags: "&"
+            filterListByTags: "&"
         }
     }
 }
@@ -21,9 +21,11 @@ class asideController {
     }
 
     onSelectTag(tag){
-        if(this.selectedTags.indexOf(tag) === -1){ // sum?
+        if(this.selectedTags.indexOf(tag) === -1){ // .some() ?
             this.selectedTags.push(tag);
-            this.getNoteListByTags({selectedTags: this.selectedTags});
-        }   
+        }else{
+            this.selectedTags.splice(this.selectedTags.indexOf(tag), 1);
+        }  
+        this.filterListByTags({selectedTags: this.selectedTags});
     }
 };

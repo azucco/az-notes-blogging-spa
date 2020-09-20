@@ -6,38 +6,38 @@ export default class appController {
     }
 
     async $onInit() { // spunto per articolo
-        this.fetchTag();
-        this.fetchNotes();
-    }
-
-    async fetchTag() {
-        this.tags = await this.ResourcesService.getTags.fetch({});
-    }
-
-    /**
-     * @param {Array} selectedTags 
-     */
-    async fetchNotes(selectedTags) {
-        if (selectedTags !== undefined && selectedTags.length > 0) {
-            this.notes = await this.ResourcesService.getNotesByTags.fetch({
-                'tag': selectedTags
-            });
-        } else {
-            this.notes = await this.ResourcesService.getNotes.fetch({});
-        }
-    }
-
-    /**
-     * @param {Array} selectedTags 
-     */
-    buildQueryString(selectedTags) {
-        let i = 0;
-        const selectedTagsQueryString = selectedTags.map(tag => {
-            const prefix = i === 0 ? '?' : '&';
-            i++;
-            return `${prefix}tag=${tag}`
+        this.ResourcesService.getNotes.fetch({}).$promise.then(notes => {
+            this.notes = notes;
+            this.notes.forEach(note => note.visible = true);
         })
-        return selectedTagsQueryString;
+        this.ResourcesService.getTags.fetch({}).$promise.then(tags => {
+            this.tags = tags.map(tag => {
+                const tagObj = {
+                    value: tag,
+                    visible: true
+                };
+                return tagObj;
+            })
+        })
+        
+    }
+
+    filterList(selectedTags) {
+        let i = 0;
+        let visibleTags = [];
+
+        this.notes.forEach(note => {
+            note.visible = selectedTags.every(tag => note.tags.includes(tag)) ? true : false;
+            if(note.visible === true){
+                let currentTags = i === 0 ? note.tags : note.tags.filter(tag => !visibleTags.includes(tag));
+                visibleTags = i === 0 ? currentTags : visibleTags.concat(currentTags);
+                i++;
+            }
+        });
+
+        // filter tags
+        console.log(visibleTags);
+        this.tags.forEach(tag => tag.visible = visibleTags.indexOf(tag.value) === -1 ? false : true);
     }
 }
 /**

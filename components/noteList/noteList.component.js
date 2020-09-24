@@ -5,7 +5,8 @@ export default function noteListComponent() {
         controllerAs: 'nl',
         bindings: {
             updateTag: '&',
-            notes: '<'
+            notes: '<',
+            onSelectTag: '&'
         }
     }
 }

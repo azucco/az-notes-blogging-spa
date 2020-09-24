@@ -10,7 +10,7 @@
         <li ng-repeat="tag in a.tags">
           <a 
             class="badge badge-pill"
-            ng-click="a.onSelectTag(tag.value)" 
+            ng-click="a.onSelectTag({tag: tag.value})" 
             ng-href="/"
             ng-class="{'badge-primary': a.selectedTags.indexOf(tag.value) !== -1, 
                       'badge-light': a.selectedTags.indexOf(tag.value) === -1}">

@@ -5,27 +5,11 @@ export default function asideComponent() {
         controllerAs: 'a',
         bindings: {
             tags: '<',
-            filterListByTags: "&"
+            onSelectTag: "&",
+            selectedTags: '<'
         }
     }
 }
 
 class asideController {
-
-    constructor(ResourcesService) {
-        this.ResourcesService = ResourcesService;
-    }
-
-    async $onInit() {
-        this.selectedTags = [];
-    }
-
-    onSelectTag(tag){
-        if(this.selectedTags.indexOf(tag) === -1){ // .some() ?
-            this.selectedTags.push(tag);
-        }else{
-            this.selectedTags.splice(this.selectedTags.indexOf(tag), 1);
-        }  
-        this.filterListByTags({selectedTags: this.selectedTags});
-    }
 };

@@ -19,7 +19,17 @@ export default class appController {
                 return tagObj;
             })
         })
+        this.selectedTags = [];
         
+    }
+
+    onSelectTag(tag){
+        if(this.selectedTags.indexOf(tag) === -1){ // .some() ?
+            this.selectedTags.push(tag);
+        }else{
+            this.selectedTags.splice(this.selectedTags.indexOf(tag), 1);
+        }
+        this.filterList(this.selectedTags);
     }
 
     filterList(selectedTags) {
@@ -36,7 +46,6 @@ export default class appController {
         });
 
         // filter tags
-        console.log(visibleTags);
         this.tags.forEach(tag => tag.visible = visibleTags.indexOf(tag.value) === -1 ? false : true);
     }
 }

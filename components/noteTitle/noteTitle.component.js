@@ -26,8 +26,7 @@ class noteTitleController {
                     this.removeNote();
                 }else{
                     this.location.path('/');
-                }
-                
+                } 
             });
     }
 

@@ -11,7 +11,12 @@
     <div class="container">
         <header-component></header-component>
         <div class="row">
-            <aside-component tags="a.tags" filter-list-by-tags="a.filterList(selectedTags)" class="col-md-4"></aside-component>
+            <aside-component 
+                tags="a.tags" 
+                on-select-tag="a.onSelectTag(tag)" 
+                selected-tags="a.selectedTags"
+                class="col-md-4">
+            </aside-component>
             <div ng-view class="col-md-8">
             </div>
         </div>

@@ -3,9 +3,16 @@
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <div class="col p-4 d-flex flex-column position-static">
         <span>
-          <a class="tag" ng-repeat="tag in note.tags" ng-href="tag/{{tag | lowercase}}">
-            <strong class="d-inline-block mb-2 text-primary">{{tag}}</strong>
+          <a 
+            ng-repeat="tag in note.tags"
+            class="badge badge-pill badge-light tag"
+            ng-click="nl.onSelectTag({tag: tag})" 
+            ng-href="/">
+              {{tag}}
           </a>
+          <!-- <button class="tag" ng-repeat="tag in note.tags">
+            <strong class="d-inline-block text-primary">{{tag}}</strong>
+          </button> -->
         </span>
         <div>
           <note-title-component 

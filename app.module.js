@@ -10,6 +10,7 @@ import noteFormModule from './components/noteForm/noteForm.module';
 import appController from './app.controller';
 import ResourcesService from './services/resources.service.js';
 import 'bootstrap/dist/css/bootstrap.css';
+import './_global.scss';
 
 angular
     .module('mainApp', [ngRoute, ngResource, headerModule, footerModule, asideModule, noteListModule, noteModule, noteFormModule]) // metodo module('moduleName', [dependencies, ...])
@@ -18,7 +19,7 @@ angular
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: '<note-list-component update-tag="a.fetchTag()" notes="a.notes"></note-list-component>'
+                template: '<note-list-component update-tag="a.fetchTag()" on-select-tag="a.onSelectTag(tag)" notes="a.notes"></note-list-component>'
             })
             .when('/new', {
                 template: '<note-form-component update-tag="a.fetchTag()"></note-form-component>'

@@ -1,11 +1,16 @@
 export default class appController {
     /* @ngInject */
-    constructor(ResourcesService) {
+    constructor(ResourcesService, $location) {
         this.title = "aznotes";
         this.ResourcesService = ResourcesService;
+        this.location = $location;
     }
 
-    async $onInit() { // spunto per articolo
+    $onInit() { // spunto per articolo
+        this.init();
+    }
+
+    async init() {
         this.ResourcesService.getNotes.fetch({}).$promise.then(notes => {
             this.notes = notes;
             this.notes.forEach(note => note.visible = true);
@@ -20,7 +25,6 @@ export default class appController {
             })
         })
         this.selectedTags = [];
-        
     }
 
     onSelectTag(tag){
@@ -29,10 +33,10 @@ export default class appController {
         }else{
             this.selectedTags.splice(this.selectedTags.indexOf(tag), 1);
         }
-        this.filterList(this.selectedTags);
+        this.filterListByTags(this.selectedTags);
     }
 
-    filterList(selectedTags) {
+    filterListByTags(selectedTags) {
         let i = 0;
         let visibleTags = [];
 
@@ -47,6 +51,12 @@ export default class appController {
 
         // filter tags
         this.tags.forEach(tag => tag.visible = visibleTags.indexOf(tag.value) === -1 ? false : true);
+    }
+
+    onSearchType(string){
+        this.notes.forEach(note => {
+            note.visible = note.title.includes(string) || note.description.includes(string) ? true : false;
+        })
     }
 }
 /**

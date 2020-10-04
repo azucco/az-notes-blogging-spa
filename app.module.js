@@ -19,13 +19,13 @@ angular
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: '<note-list-component update-tag="a.fetchTag()" on-select-tag="a.onSelectTag(tag)" notes="a.notes"></note-list-component>'
+                template: '<note-list-component on-select-tag="a.onSelectTag(tag)" notes="a.notes"></note-list-component>'
             })
             .when('/new', {
-                template: '<note-form-component update-tag="a.fetchTag()"></note-form-component>'
+                template: '<note-form-component initialize="a.init()"></note-form-component>'
             })
             .when('/edit/:noteId', {
-                template: '<note-form-component update-tag="a.fetchTag()"></note-form-component>'
+                template: '<note-form-component initialize="a.init()"></note-form-component>'
             })
             .when('/:noteId', {
                 template: '<note-component></note-component>'

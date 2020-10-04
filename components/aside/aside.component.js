@@ -6,10 +6,15 @@ export default function asideComponent() {
         bindings: {
             tags: '<',
             onSelectTag: "&",
-            selectedTags: '<'
+            selectedTags: '<',
+            onSearchType: '&'
         }
     }
 }
 
 class asideController {
+
+    $onInit(){
+        this.searchString = '';
+    }
 };

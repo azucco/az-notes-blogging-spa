@@ -4,7 +4,6 @@ export default function noteListComponent() {
         controller: noteListController,
         controllerAs: 'nl',
         bindings: {
-            updateTag: '&',
             notes: '<',
             onSelectTag: '&'
         }
@@ -22,7 +21,6 @@ class noteListController {
 
     removeNote(id) {
         this.notes = this.filter('filter')(this.notes, {_id: `!${id}`}); // spunto per articolo
-        this.updateTag();
     }
 
 

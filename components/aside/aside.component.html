@@ -20,4 +20,10 @@
       </ol>
     </div>
 
+    <form>
+      <div class="form-group">
+        <input class="form-control" ng-model="a.searchString" ng-keyup="a.onSearchType({string: a.searchString})" placeholder="Search note">
+      </div>
+    </form>
+
   </aside>

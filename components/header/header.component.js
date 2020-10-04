@@ -8,7 +8,4 @@ export default function headerComponent() {
 
 class headerController {
 
-    constructor() {
-
-    }
 };

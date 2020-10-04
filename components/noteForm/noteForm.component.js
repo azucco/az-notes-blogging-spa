@@ -4,7 +4,7 @@ export default function noteFormComponent() {
         controller: noteFormController,
         controllerAs: 'nf',
         bindings: {
-            updateTag: '&'
+            initialize: '&'
         }
     }
 }
@@ -31,7 +31,7 @@ class noteFormController {
                 })
                     .$promise.then((note) => {
                         if (note._id !== undefined) {
-                            this.updateTag();
+                            this.initialize();
                             this.location.path('/');
                         }
                     });
@@ -45,13 +45,12 @@ class noteFormController {
                 })
                     .$promise.then((note) => {
                         if (note._id !== undefined) {
-                            this.updateTag();
+                            this.initialize();
                             this.location.path(`/${note._id}`);
                         }
                     });
             }
         }
-
     }
 
     init() {

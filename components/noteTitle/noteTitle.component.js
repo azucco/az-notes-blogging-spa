@@ -6,7 +6,8 @@ export default function noteTitleComponent() {
         bindings: {
             title: '<',
             id: '<',
-            removeNote: '&?', // spunto per articolo
+            published: '<',
+            removeNote: '&?' // spunto per articolo
         }
     }
 }
@@ -26,8 +27,15 @@ class noteTitleController {
                     this.removeNote();
                 }else{
                     this.location.path('/');
-                } 
+                }
             });
+    }
+
+    publish(id) { 
+        this.ResourcesService.publishNote.fetch({
+            id: id,
+            published: !this.published
+        }).$promise;
     }
 
 };

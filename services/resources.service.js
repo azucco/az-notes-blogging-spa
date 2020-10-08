@@ -48,6 +48,17 @@ export default class ResourcesService {
                     method: 'PUT',
                 }
             });
+        
+        this.publishNote = this.resource(`http://localhost:3000/note/publish/:id`,
+            {
+                id: "@id",
+                published: "@published"
+            },
+            {
+                fetch: {
+                    method: 'PUT',
+                }
+            });
 
         this.deleteNote = this.resource(`http://localhost:3000/note/:id`,
             {

@@ -10,16 +10,13 @@
             ng-href="/">
               {{tag}}
           </a>
-          <!-- <button class="tag" ng-repeat="tag in note.tags">
-            <strong class="d-inline-block text-primary">{{tag}}</strong>
-          </button> -->
         </span>
         <div>
           <note-title-component 
             title="note.title" 
             id="note._id"
             published="note.published" 
-            remove-note="nl.removeNote(note._id)" 
+            initialize="nl.initialize()" 
           />
         </div>
         <div class="mb-1 text-muted">{{note.created | date:"dd/MM/yy"}} <span ng-show="note.updated !== undefined">(updated: {{note.updated | date:"dd/MM/yy"}})</span></div>

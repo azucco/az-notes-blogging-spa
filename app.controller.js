@@ -55,8 +55,21 @@ export default class appController {
 
     onSearchType(string){
         this.notes.forEach(note => {
-            note.visible = note.title.includes(string) || note.description.includes(string) ? true : false;
+            const match = note.title.includes(string) || note.description.includes(string) || this.isMatch(note.tags, string);
+            note.visible = match ? true : false;
         })
+    }
+
+    isMatch(tags, string){
+        tags.forEach(tag => {
+            console.log(tag);
+            console.log(string);
+            if(tag.includes(string)){
+                console.log(true)
+                return true;
+            }
+        })
+        return false;
     }
 }
 /**

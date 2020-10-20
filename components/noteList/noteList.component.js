@@ -5,7 +5,8 @@ export default function noteListComponent() {
         controllerAs: 'nl',
         bindings: {
             notes: '<',
-            onSelectTag: '&'
+            onSelectTag: '&',
+            initialize: '&'
         }
     }
 }
@@ -18,10 +19,5 @@ class noteListController {
         this.filter = $filter;
         this.routeParams = $routeParams;
     }
-
-    removeNote(id) {
-        this.notes = this.filter('filter')(this.notes, {_id: `!${id}`}); // spunto per articolo
-    }
-
 
 };

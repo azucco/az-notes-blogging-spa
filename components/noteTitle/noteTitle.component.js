@@ -7,7 +7,7 @@ export default function noteTitleComponent() {
             title: '<',
             id: '<',
             published: '<',
-            removeNote: '&?' // spunto per articolo
+            initialize: '&?' 
         }
     }
 }
@@ -23,8 +23,8 @@ class noteTitleController {
     delete(id) {
         this.ResourcesService.deleteNote.fetch({ id: id })
             .$promise.then(() => {
-                if(this.removeNote !== undefined){
-                    this.removeNote();
+                if(this.initialize !== undefined){
+                    this.initialize();
                 }else{
                     this.location.path('/');
                 }
@@ -35,7 +35,13 @@ class noteTitleController {
         this.ResourcesService.publishNote.fetch({
             id: id,
             published: !this.published
-        }).$promise;
+        }).$promise.then(() => {
+            if(this.initialize !== undefined){
+                this.initialize();
+            }else{
+                this.location.path('/');
+            }
+        });
     }
 
 };

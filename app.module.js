@@ -19,7 +19,7 @@ angular
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: '<note-list-component on-select-tag="a.onSelectTag(tag)" notes="a.notes"></note-list-component>'
+                template: '<note-list-component on-select-tag="a.onSelectTag(tag)" notes="a.notes" initialize="a.init()"></note-list-component>'
             })
             .when('/new', {
                 template: '<note-form-component initialize="a.init()"></note-form-component>'

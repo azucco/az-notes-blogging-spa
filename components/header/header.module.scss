@@ -1,0 +1,18 @@
+@import '../../_global.scss';
+
+.logo {
+    background-image: url("../../images/aznotes_logo.png");
+    background-size: 300px;
+    background-position: center;
+    height: 100px;
+    width: 250px;
+}
+
+.action-btn {
+    font-size: 2rem;
+    color: black; // todo: use variable
+    &:hover {
+        color: $first-color;
+        text-decoration: none;
+    }
+}

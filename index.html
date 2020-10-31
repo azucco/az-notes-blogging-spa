@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>appunti</title>
+    <title>aznotes</title>
 </head>
 
 <body ng-controller="appController as a">
     <div class="container">
         <header-component></header-component>
         <div class="row">
-            <aside-component 
-                tags="a.tags" 
-                on-select-tag="a.onSelectTag(tag)" 
+            <aside-component
+                tags="a.tags"
+                on-select-tag="a.onSelectTag(tag)"
                 selected-tags="a.selectedTags"
                 on-search-type="a.onSearchType(string)"
-                class="col-md-4">
+                class="col-md-3">
             </aside-component>
-            <div ng-view class="col-md-8">
+            <div ng-view class="col-md-9">
             </div>
         </div>
         <footer-component></footer-component>

@@ -1,0 +1,9 @@
+$first-color: #5e17eb;
+
+.badge-primary {
+  background-color: $first-color;
+  &:focus {
+    background-color: $first-color !important;
+    box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important;
+  }
+}

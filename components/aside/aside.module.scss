@@ -1,3 +1,31 @@
+@import '../../_global.scss';
+
 aside {
     padding-top: 7px;
+
+    .searchForm {
+        margin-top: 20px;
+
+        .form-group {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: solid 2px $first-color;
+
+          svg {
+            color: $first-color;
+          }
+        }
+
+        input {
+          border: none;
+          border-radius: 0;
+
+          &:focus {
+            border-color: white;
+            box-shadow: inset 0 0 0 0rem rgba(0, 0, 0, 1);
+          }
+        }
+
+    }
 }

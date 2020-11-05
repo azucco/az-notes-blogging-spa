@@ -6,7 +6,7 @@ module.exports = {
     entry: './app.module.js',
     output: {
         filename: 'aznotes-webpack.bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, '')
     },
     module: {
         rules: [
@@ -50,6 +50,6 @@ module.exports = {
 
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './index.html' })
+        new HtmlWebpackPlugin({ template: './app.index.html' })
     ]
 };

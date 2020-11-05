@@ -1,4 +1,15 @@
-.btn {
-    z-index: 2;
-    position: relative;
+@import '../../_global.scss';
+
+.admin-actions-container {
+  display: flex;
+  justify-content: flex-start;
+  // border-bottom: solid 2px $first-color;
+  .btn {
+      position: relative;
+      z-index: 2;
+      padding: 0px;
+      font-size: 1rem !important;
+      vertical-align: bottom !important;
+      margin-right: 5px;
+  }
 }

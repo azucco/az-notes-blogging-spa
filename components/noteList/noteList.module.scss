@@ -1,7 +1,13 @@
+@import '../../_global.scss';
+
 strong::after {
     content: "\00a0";
 }
-
+.not-container:hover {
+  h2 {
+    color: $first-color;
+  }
+}
 .tag {
     z-index: 2;
     position: relative;

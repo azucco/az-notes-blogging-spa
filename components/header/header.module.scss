@@ -10,9 +10,4 @@
 
 .action-btn {
     font-size: 2rem;
-    color: black; // todo: use variable
-    &:hover {
-        color: $first-color;
-        text-decoration: none;
-    }
 }

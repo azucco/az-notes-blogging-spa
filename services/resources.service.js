@@ -1,80 +1,72 @@
 export default class ResourcesService {
-    /* @ngInject */
-    constructor($resource) {
-        this.resource = $resource;
-        this.init();
-    }
 
-    init() {
+  /* @ngInject */
+  constructor($resource) {
+    this.resource = $resource;
+    this.init();
+  }
 
-        this.getNotes = this.resource(`http://localhost:3000/notes/:tags`,
-            {
-            },
-            {
-                fetch: { isArray: true }
-            });
+  init() {
 
-        this.getNote = this.resource(`http://localhost:3000/note/:id`,
-            {
-                id: '@id'
-            },
-            {
-                fetch: {
-                    method: 'GET',
-                }
-            });
+    const API_URL = ' https://aznote.herokuapp.com';
 
-        this.saveNote = this.resource(`http://localhost:3000/note/`,
-            {
-                title: "@title",
-                description: "@description",
-                markdown: "@markdown"
-            },
-            {
-                fetch: {
-                    method: 'POST',
-                }
-            });
+    this.getNotes = this.resource(`${API_URL}/notes/:tags`, {}, {
+      fetch: {
+        isArray: true
+      }
+    });
 
-        this.updateNote = this.resource(`http://localhost:3000/note/:id`,
-            {
-                id: "@id",
-                title: "@title",
-                description: "@description",
-                markdown: "@markdown"
-            },
-            {
-                fetch: {
-                    method: 'PUT',
-                }
-            });
-        
-        this.publishNote = this.resource(`http://localhost:3000/note/publish/:id`,
-            {
-                id: "@id",
-                published: "@published"
-            },
-            {
-                fetch: {
-                    method: 'PUT',
-                }
-            });
+    this.getNote = this.resource(`${API_URL}/note/:id`, {
+      id: '@id'
+    }, {
+      fetch: {
+        method: 'GET',
+      }
+    });
 
-        this.deleteNote = this.resource(`http://localhost:3000/note/:id`,
-            {
-                id: "@id"
-            },
-            {
-                fetch: {
-                    method: 'DELETE',
-                }
-            });
-           
-        this.getTags = this.resource(`http://localhost:3000/tags`,
-            {},
-            {
-                fetch: { isArray: true }
-            });    
+    this.saveNote = this.resource(`${API_URL}/note/`, {
+      title: "@title",
+      description: "@description",
+      markdown: "@markdown"
+    }, {
+      fetch: {
+        method: 'POST',
+      }
+    });
 
-    }
+    this.updateNote = this.resource(`${API_URL}/note/:id`, {
+      id: "@id",
+      title: "@title",
+      description: "@description",
+      markdown: "@markdown"
+    }, {
+      fetch: {
+        method: 'PUT',
+      }
+    });
+
+    this.publishNote = this.resource(`${API_URL}/note/publish/:id`, {
+      id: "@id",
+      published: "@published"
+    }, {
+      fetch: {
+        method: 'PUT',
+      }
+    });
+
+    this.deleteNote = this.resource(`${API_URL}/note/:id`, {
+      id: "@id"
+    }, {
+      fetch: {
+        method: 'DELETE',
+      }
+    });
+
+    this.getTags = this.resource(`${API_URL}/tags`, {}, {
+      fetch: {
+        isArray: true
+      }
+    });
+
+  }
 }
